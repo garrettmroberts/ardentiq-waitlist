@@ -13,7 +13,7 @@
 
 .header {
   width: 100%;
-  padding: 4.5rem 0 2.5rem 0;
+  padding: 4.5rem 0 0 0;
   background: transparent;
   text-align: center;
   display: flex;
@@ -21,7 +21,6 @@
   align-items: center;
   justify-content: center;
   gap: 1.2rem;
-  margin-bottom: 2.5rem;
   position: relative;
 }
 
@@ -33,7 +32,6 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-fill-color: transparent;
   text-shadow: 0 4px 32px rgba(114, 207, 205, 0.12);
   margin-bottom: 0.5rem;
 }
@@ -44,7 +42,6 @@
   color: #b3c2e2;
   margin-left: 0.7rem;
   letter-spacing: 0.1em;
-  vertical-align: super;
 }
 
 .tagline {
@@ -256,10 +253,14 @@
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 2rem;
   overflow-x: auto;
-  margin: 2rem 0 1.5rem 0;
-  padding-bottom: 0.5rem;
+  padding: 3rem 0;
   -webkit-overflow-scrolling: touch;
+}
+
+.heroScroll::-webkit-scrollbar {
+  display: none;
 }
 
 .heroCards {
@@ -358,5 +359,93 @@
   }
   .cardContent p {
     font-size: 0.85rem;
+  }
+} 
+
+.waitlistForm {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  margin: 2rem 0 0.5rem 0;
+}
+
+.waitlistInput {
+  background: #101a36;
+  border: 1.5px solid #29405c;
+  color: #fff;
+  padding: 0.85rem 1.1rem;
+  border-radius: 8px;
+  font-size: 1.05rem;
+  width: 270px;
+  outline: none;
+  transition: border 0.18s;
+}
+.waitlistInput:focus {
+  border-color: #72CFCD;
+}
+.waitlistInput:disabled {
+  opacity: 0.7;
+}
+
+.waitlistButton {
+  background: #72CFCD;
+  color: #09112d;
+  border: none;
+  border-radius: 8px;
+  padding: 0.85rem 1.7rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+  box-shadow: 0 1px 4px 0 rgba(114, 207, 205, 0.08);
+}
+.waitlistButton:disabled {
+  background: #4bbab7;
+  color: #ffffff;
+  cursor: not-allowed;
+}
+
+.toast {
+  margin: 1rem auto 0 auto;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  max-width: 350px;
+  text-align: center;
+  box-shadow: 0 2px 16px 0 rgba(41, 64, 92, 0.13);
+  animation: fadeInOut 3.5s;
+}
+.toastSuccess {
+  background: #e6f7f7;
+  color: #09112d;
+  border: 1.5px solid #72CFCD;
+}
+.toastError {
+  background: #ffeded;
+  color: #b30000;
+  border: 1.5px solid #e57373;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(10px); }
+  10% { opacity: 1; transform: translateY(0); }
+  90% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-10px); }
+}
+
+@media (max-width: 600px) {
+  .waitlistForm {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .waitlistInput {
+    width: 100%;
+    min-width: 0;
+  }
+  .waitlistButton {
+    width: 100%;
   }
 } 

@@ -1,6 +1,37 @@
+"use client";
 import styles from "./Landing.module.css";
+import { useState } from "react";
 
 export default function Home() {
+  const [email, setEmail] = useState("");
+  const [toast, setToast] = useState<{ message: string; type: "success" | "error" | null }>({ message: "", type: null });
+  const [loading, setLoading] = useState(false);
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setLoading(true);
+    setToast({ message: "", type: null });
+    try {
+      const res = await fetch("/api/email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        setToast({ message: "Thank you! You're on the waitlist.", type: "success" });
+        setEmail("");
+      } else {
+        setToast({ message: data.error || "Something went wrong.", type: "error" });
+      }
+    } catch (err) {
+      setToast({ message: "Network error. Please try again.", type: "error" });
+    } finally {
+      setLoading(false);
+      setTimeout(() => setToast({ message: "", type: null }), 3500);
+    }
+  }
+
   return (
     <div className={styles.container}>
       <header className={styles.header}>
@@ -67,12 +98,44 @@ export default function Home() {
           </div>
         </section>
         <section className={styles.ctaSection}>
-          <h2>Waitlist coming soon</h2>
-          <p>Sign up to be the first to know when ArdentIQ launches.</p>
+          <h2>Join the waitlist</h2>
+          <p>
+            We are currently conducting trials with select businesses. Join the waitlist and we’ll let you know when an official release is announced.
+          </p>
+          <form className={styles.waitlistForm} onSubmit={handleSubmit} autoComplete="off">
+            <input
+              type="email"
+              className={styles.waitlistInput}
+              placeholder="Your email for the waitlist"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+              required
+              disabled={loading}
+              aria-label="Email address"
+            />
+            <button className={styles.waitlistButton} type="submit" disabled={loading || !email}>
+              {loading ? "Sending..." : "Join Waitlist"}
+            </button>
+          </form>
+          {toast.message && (
+            <div
+              className={
+                styles.toast +
+                " " +
+                (toast.type === "success" ? styles.toastSuccess : styles.toastError)
+              }
+              role="alert"
+              aria-live="polite"
+            >
+              {toast.message}
+            </div>
+          )}
         </section>
       </main>
       <footer className={styles.footer}>
-        &copy; {new Date().getFullYear()} ArdentIQ LLC. All rights reserved.
+        <div style={{ marginTop: "2rem" }}>
+          &copy; {new Date().getFullYear()} ArdentIQ LLC. All rights reserved.
+        </div>
       </footer>
     </div>
   );
