@@ -83,34 +83,54 @@ const transporter = nodemailer.createTransport({
     user: process.env.AWS_SES_SMTP_USERNAME,
     pass: process.env.AWS_SES_SMTP_PASSWORD,
   },
+  pool: true,
+  maxConnections: 1,
+  maxMessages: 3,
+  rateLimit: 1,
+  connectionTimeout: 60000,
+  greetingTimeout: 30000,
+  socketTimeout: 60000,
 });
 
-// Welcome email template
 const createWelcomeEmail = (email: string) => ({
-  from: process.env.SENDER_EMAIL,
+  from: {
+    name: "ArdentIQ Team",
+    address: process.env.SENDER_EMAIL!,
+  },
   to: email,
-  subject: "Welcome to ArdentIQ! 🚀",
+  subject: "Welcome to ArdentIQ - You're on the waitlist!",
+  headers: {
+    "List-Unsubscribe": "<mailto:unsubscribe@ardentiq.ai>",
+    Precedence: "bulk",
+    "X-Auto-Response-Suppress": "OOF, AutoReply",
+    "X-Mailer": "ArdentIQ Waitlist System",
+    "X-Priority": "3",
+    "X-MSMail-Priority": "Normal",
+  },
   html: `
     <!DOCTYPE html>
-    <html>
+    <html lang="en">
     <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="color-scheme" content="light">
+      <meta name="supported-color-schemes" content="light">
       <title>Welcome to ArdentIQ</title>
       <style>
         body { 
-          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; 
           line-height: 1.6; 
-          color: #333; 
+          color: #333333; 
           max-width: 600px; 
           margin: 0 auto; 
           padding: 20px;
+          background-color: #ffffff;
         }
         .header { 
           text-align: center; 
           padding: 30px 0; 
           background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-          color: white; 
+          color: #ffffff; 
           border-radius: 10px 10px 0 0;
         }
         .content { 
@@ -118,32 +138,43 @@ const createWelcomeEmail = (email: string) => ({
           background: #f8f9fa; 
           border-radius: 0 0 10px 10px;
         }
-        .button { 
-          display: inline-block; 
-          padding: 12px 24px; 
-          background: #007bff; 
-          color: white; 
-          text-decoration: none; 
-          border-radius: 5px; 
-          margin: 20px 0;
-        }
-        .footer { 
-          text-align: center; 
-          margin-top: 30px; 
-          color: #666; 
-          font-size: 14px;
-        }
         .highlight { 
           background: #fff3cd; 
           padding: 15px; 
           border-radius: 5px; 
           border-left: 4px solid #ffc107;
+          margin: 20px 0;
         }
+        .footer { 
+          text-align: center; 
+          margin-top: 30px; 
+          color: #666666; 
+          font-size: 14px;
+          border-top: 1px solid #e9ecef;
+          padding-top: 20px;
+        }
+        .unsubscribe {
+          text-align: center;
+          margin-top: 20px;
+          font-size: 12px;
+          color: #999999;
+        }
+        .unsubscribe a {
+          color: #999999;
+          text-decoration: underline;
+        }
+        h1 { margin: 0; font-size: 28px; }
+        h2 { color: #333333; margin-top: 0; }
+        h3 { color: #555555; }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 8px; }
+        a { color: #007bff; text-decoration: none; }
+        a:hover { text-decoration: underline; }
       </style>
     </head>
     <body>
       <div class="header">
-        <h1>🚀 Welcome to ArdentIQ!</h1>
+        <h1>Welcome to ArdentIQ</h1>
         <p>You're now on the waitlist for the future of knowledge management</p>
       </div>
       
@@ -181,14 +212,22 @@ const createWelcomeEmail = (email: string) => ({
       </div>
       
       <div class="footer">
+        <p><strong>ArdentIQ LLC</strong><br>
+        Boulder, CO 80301<br>
+        United States</p>
+        
         <p>© ${new Date().getFullYear()} ArdentIQ LLC. All rights reserved.</p>
-        <p>This email was sent to ${email}. If you didn't sign up for our waitlist, you can safely ignore this email.</p>
+        
+        <div class="unsubscribe">
+          <p>This email was sent to ${email} because you signed up for our waitlist.</p>
+          <p><a href="mailto:unsubscribe@ardentiq.ai">Unsubscribe</a> | <a href="mailto:privacy@ardentiq.ai">Privacy Policy</a></p>
+        </div>
       </div>
     </body>
     </html>
   `,
   text: `
-Welcome to ArdentIQ! 🚀
+Welcome to ArdentIQ - You're on the waitlist!
 
 Thank you for joining us!
 
@@ -207,7 +246,7 @@ What ArdentIQ will offer:
 
 In the meantime, feel free to:
 - Visit ardentiq.ai to learn more
-- Follow us for updates and insights
+- Follow us on LinkedIn for updates and insights
 - Share with colleagues who might be interested
 
 We're working hard to bring you a platform that will revolutionize how your organization handles knowledge and documents.
@@ -215,8 +254,15 @@ We're working hard to bring you a platform that will revolutionize how your orga
 Best regards,
 The ArdentIQ Team
 
+ArdentIQ LLC
+Boulder, CO 80301
+United States
+
 © ${new Date().getFullYear()} ArdentIQ LLC. All rights reserved.
-This email was sent to ${email}. If you didn't sign up for our waitlist, you can safely ignore this email.
+
+This email was sent to ${email} because you signed up for our waitlist.
+To unsubscribe, reply to this email with "unsubscribe" in the subject line.
+For privacy policy, contact privacy@ardentiq.ai
   `,
 });
 
@@ -265,10 +311,13 @@ export async function POST(req: NextRequest) {
       try {
         const welcomeEmail = createWelcomeEmail(email);
         await transporter.sendMail(welcomeEmail);
-        console.log(`Welcome email sent successfully to ${email}`);
       } catch (emailError) {
-        console.error("Failed to send welcome email:", emailError);
-        // Don't fail the entire request if email fails
+        console.error("Failed to send welcome email:", {
+          email: email,
+          error: emailError,
+          timestamp: new Date().toISOString(),
+          ip: ip,
+        });
       }
 
       return NextResponse.json({ success: true });
