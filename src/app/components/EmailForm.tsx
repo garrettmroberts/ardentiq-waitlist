@@ -36,7 +36,7 @@ const EmailForm = ({
                 setToast({ message: data.error || "Something went wrong.", type: "error" });
                 setTimeout(() => setToast({ message: "", type: null }), 5000);
             }
-        } catch (err) {
+        } catch {
             setToast({ message: "Network error. Please try again.", type: "error" });
             setTimeout(() => setToast({ message: "", type: null }), 5000);
         } finally {
