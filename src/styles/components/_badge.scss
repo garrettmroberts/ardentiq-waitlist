@@ -1,0 +1,18 @@
+.badge {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.2rem 0.5em;
+    border-radius: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+
+    &--default {
+        background-color: oklch(.95 .0058 264.53);
+    }
+
+    &--outline {
+        background-color: transparent;
+        border: black 1px solid;
+    }
+}

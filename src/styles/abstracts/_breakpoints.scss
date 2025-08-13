@@ -1,0 +1,77 @@
+// Breakpoint variables for responsive design
+$breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);
+
+// Breakpoint mixins
+@mixin respond-to($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @warn "Unknown breakpoint: #{$breakpoint}";
+  }
+}
+
+@mixin respond-below($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (max-width: (map-get($breakpoints, $breakpoint) - 1px)) {
+      @content;
+    }
+  } @else {
+    @warn "Unknown breakpoint: #{$breakpoint}";
+  }
+}
+
+@mixin respond-between($min, $max) {
+  @if map-has-key($breakpoints, $min) and map-has-key($breakpoints, $max) {
+    @media (min-width: map-get($breakpoints, $min)) and (max-width: (map-get($breakpoints, $max) - 1px)) {
+      @content;
+    }
+  } @else {
+    @warn "Unknown breakpoint: #{$min} or #{$max}";
+  }
+}
+
+// Common breakpoint shortcuts
+@mixin mobile {
+  @include respond-below(md) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @include respond-between(md, lg) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @include respond-to(lg) {
+    @content;
+  }
+}
+
+@mixin mobile-only {
+  @include respond-below(sm) {
+    @content;
+  }
+}
+
+@mixin tablet-only {
+  @include respond-between(sm, lg) {
+    @content;
+  }
+}
+
+@mixin desktop-only {
+  @include respond-to(lg) {
+    @content;
+  }
+}

@@ -1,0 +1,30 @@
+// Main SCSS file - imports all other SCSS modules
+// Follows the 7-1 pattern architecture
+
+// Abstracts - variables, functions, mixins
+@import 'abstracts/variables';
+@import 'abstracts/mixins';
+@import 'abstracts/breakpoints';
+
+// Base - reset, typography, base styles
+@import 'base/reset';
+@import 'base/typography';
+@import 'base/base';
+
+// Layout - header, footer, navigation, grid
+@import 'components/header';
+
+// Components - buttons, forms, cards, etc.
+@import 'components/badge';
+@import 'components/buttons';
+@import 'components/forms';
+@import 'components/hero';
+@import 'components/features';
+@import 'components/benefits';
+@import 'components/cta';
+
+// Pages - page-specific styles
+@import 'pages/landing';
+
+// Utilities - helper classes
+@import 'utilities/colors';

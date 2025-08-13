@@ -1,0 +1,198 @@
+// Base Element Styles
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font-family-primary;
+  font-size: $font-size-base;
+  line-height: $line-height-normal;
+  color: $gray-900;
+  background-color: $white;
+  min-height: 100vh;
+  overflow-x: hidden;
+  
+  // CSS custom property for the font variable
+  --font-roboto-condensed: var(--font-roboto-condensed);
+}
+
+// Selection styles
+::selection {
+  background-color: rgba($primary-color, 0.2);
+}
+
+::-moz-selection {
+  background-color: rgba($primary-color, 0.2);
+}
+
+// Scrollbar styles
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: $gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $gray-300;
+  border-radius: $border-radius-full;
+  
+  &:hover {
+    background: $gray-400;
+  }
+}
+
+// Focus styles
+:focus-visible {
+  outline: 2px solid $primary-color;
+  outline-offset: 2px;
+}
+
+// Skip link for accessibility
+.skip-link {
+  @include sr-only;
+  
+  &:focus {
+    position: fixed;
+    top: $spacing-md;
+    left: $spacing-md;
+    z-index: $z-tooltip;
+    background: $primary-color;
+    color: $white;
+    padding: $spacing-sm $spacing-md;
+    border-radius: $border-radius-md;
+    text-decoration: none;
+  }
+}
+
+// Container
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 $spacing-md;
+  
+  @include respond-to(md) {
+    padding: 0 $spacing-lg;
+  }
+  
+  @include respond-to(lg) {
+    padding: 0 $spacing-xl;
+  }
+  
+  &.container-sm {
+    max-width: 640px;
+  }
+  
+  &.container-md {
+    max-width: 768px;
+  }
+  
+  &.container-lg {
+    max-width: 1024px;
+  }
+  
+  &.container-xl {
+    max-width: 1280px;
+  }
+  
+  &.container-full {
+    max-width: none;
+  }
+}
+
+// Section spacing
+.section {
+  padding: $spacing-3xl 0;
+  
+  &.section-sm {
+    padding: $spacing-xl 0;
+  }
+  
+  &.section-lg {
+    padding: $spacing-4xl 0;
+  }
+  
+  &.section-xl {
+    padding: $spacing-4xl * 1.5 0;
+  }
+}
+
+// Grid system
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -$spacing-md;
+  
+  @include respond-to(md) {
+    margin: 0 -$spacing-lg;
+  }
+}
+
+.col {
+  flex: 1;
+  padding: 0 $spacing-md;
+  
+  @include respond-to(md) {
+    padding: 0 $spacing-lg;
+  }
+  
+  @for $i from 1 through 12 {
+    &.col-#{$i} {
+      flex: 0 0 percentage($i / 12);
+      max-width: percentage($i / 12);
+    }
+  }
+}
+
+// Responsive visibility
+.hidden {
+  display: none !important;
+}
+
+.visible {
+  display: block !important;
+}
+
+@include respond-to(sm) {
+  .hidden-sm { display: none !important; }
+  .visible-sm { display: block !important; }
+}
+
+@include respond-to(md) {
+  .hidden-md { display: none !important; }
+  .visible-md { display: block !important; }
+}
+
+@include respond-to(lg) {
+  .hidden-lg { display: none !important; }
+  .visible-lg { display: block !important; }
+}
+
+@include respond-to(xl) {
+  .hidden-xl { display: none !important; }
+  .visible-xl { display: block !important; }
+}
+
+// Print styles
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  body {
+    font-size: 12pt;
+    line-height: 1.4;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+  }
+  
+  img {
+    page-break-inside: avoid;
+  }
+}

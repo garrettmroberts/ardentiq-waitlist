@@ -1,11 +1,15 @@
-import "./globals.css";
-import { Inter } from "next/font/google";
+import "@/styles/main.scss";
+import { Roboto } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const roboto = Roboto({ 
+  subsets: ["latin"], 
+  variable: "--font-roboto",
+  weight: ["300", "400", "500", "700"]
+});
 
 export const metadata = {
   title: "ArdentIQ LLC",
-  description: "AI-powered data access for SMBs",
+  description: "AI-powered data access for everyone",
 };
 
 export default function RootLayout({
@@ -15,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={roboto.className}>{children}</body>
     </html>
   );
 }

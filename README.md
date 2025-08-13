@@ -1,36 +1,157 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ArdentIQ - Waitlist Website
+
+Landing page and waitlist collection website for ArdentIQ, an AI-powered knowledge management platform that transforms documents into intelligent answers for small and mid-sized organizations.
+
+## Overview
+
+This repository contains the waitlist website for ArdentIQ. The platform enables businesses to upload PDFs, documents, and data sources, instantly creating searchable knowledge bases. Our AI provides lightning-fast retrieval, delivering precise answers from your documents in seconds rather than hours of manual searching.
+
+## What This Repository Contains
+
+- **Waitlist Landing Page** - Hero section, features overview, and CTA
+- **Email Collection System** - API endpoint for collecting waitlist signups
+- **Responsive Design** - Mobile-first design with modern UI/UX
+- **Marketing Website** - Company information and product preview
+
+## Features (Platform Preview)
+
+- **Smart Document Processing** - Upload PDFs, docs, and data sources with instant AI-powered knowledge base creation
+- **Lightning Fast Retrieval** - Get precise answers from documents in seconds, not hours
+- **Enterprise Security** - Data securely segmented within vector database ensuring complete isolation between organizations
+- **Team Collaboration** - Share knowledge across teams with role-based access and collaborative workspaces
+
+## Benefits (Platform Preview)
+
+- No technical setup required - drag, drop, done
+- Scales with your organization from 5 to 1000+ employees
+- Integrates with your existing tools and workflows
+- Transparent pricing with no hidden costs
+
+## Tech Stack
+
+- **Frontend**: Next.js 14, React, TypeScript, SCSS
+- **Backend**: Next.js API Routes
+- **Database**: PostgreSQL for waitlist email storage
+- **Styling**: Custom SCSS architecture with responsive design
+- **Deployment**: Vercel-ready with environment variable configuration
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18+ 
+- PostgreSQL database
+- Environment variables configured
+
+### Environment Variables
 
 ```bash
-npm run dev
+POSTGRES_URL=your_postgres_connection_string
 # or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+DATABASE_URL=your_database_connection_string
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Installation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Clone the repository
+```bash
+git clone https://github.com/garrettmroberts/ardentiq-waitlist
+cd ardentiq-waitlist
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. Install dependencies
+```bash
+npm install
+```
 
-## Learn More
+3. Set up environment variables
+```bash
+cp .env.example .env.local
+# Edit .env.local with your database credentials
+```
 
-To learn more about Next.js, take a look at the following resources:
+4. Run the development server
+```bash
+npm run dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+5. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Project Structure
 
-## Deploy on Vercel
+```
+ardentiq-waitlist/
+├── src/
+│   ├── app/                 # Next.js app directory
+│   │   ├── api/            # API routes (email collection)
+│   │   ├── components/     # React components (landing page)
+│   │   └── constants/      # Application constants
+│   └── styles/             # SCSS architecture
+│       ├── abstracts/      # Variables, mixins, functions
+│       ├── base/           # Reset, typography, base styles
+│       ├── components/     # Component-specific styles
+│       ├── layout/         # Layout styles
+│       └── utilities/      # Helper classes
+├── public/                 # Static assets
+└── package.json
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Development
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
+- `npm run type-check` - Run TypeScript type checking
+
+### Code Style
+
+- TypeScript for type safety
+- SCSS with 7-1 architecture pattern
+- Responsive design with mobile-first approach
+- Component-based architecture
+
+## API Endpoints
+
+### POST `/api/email`
+Collects email addresses for the ArdentIQ waitlist.
+
+**Request Body:**
+```json
+{
+  "email": "user@example.com"
+}
+```
+
+**Response:**
+```json
+{
+  "success": true
+}
+```
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## License
+
+This project is proprietary software. All rights reserved by ArdentIQ LLC.
+
+## Contact
+
+- **Company**: ArdentIQ LLC
+- **Website**: [ardentiq.com](https://ardentiq.com)
+- **Email**: [contact@ardentiq.com](mailto:contact@ardentiq.com)
+
+---
+
+**Note**: This repository contains only the waitlist website. The full ArdentIQ platform is a separate application.
+
+Built with ❤️ by the ArdentIQ team

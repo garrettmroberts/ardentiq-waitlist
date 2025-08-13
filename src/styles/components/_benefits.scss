@@ -1,0 +1,225 @@
+// Benefits Section Component Styles
+
+.benefits {
+  padding: $spacing-4xl 0;
+  background-color: $white;
+  
+  .benefits-header {
+    text-align: center;
+    margin-bottom: $spacing-4xl;
+    
+    .benefits-title {
+      font-size: $font-size-4xl;
+      font-weight: $font-weight-bold;
+      color: $gray-900;
+      margin-bottom: $spacing-lg;
+      
+      @include respond-to(md) {
+        font-size: $font-size-5xl;
+      }
+    }
+    
+    .benefits-subtitle {
+      font-size: $font-size-xl;
+      color: $gray-600;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: $line-height-relaxed;
+    }
+  }
+  
+  .benefits-grid {
+    @include grid-columns(1, $spacing-3xl);
+    
+    @include respond-to(md) {
+      grid-template-columns: repeat(2, 1fr);
+      align-items: center;
+    }
+    
+    @include respond-to(lg) {
+      grid-template-columns: 1fr 1fr;
+      gap: $spacing-4xl;
+    }
+  }
+  
+  .benefits-content {
+    .benefit-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: $spacing-2xl;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+      
+      .benefit-icon {
+        width: 48px;
+        height: 48px;
+        background: linear-gradient(135deg, $accent-color, lighten($accent-color, 20%));
+        border-radius: $border-radius-lg;
+        @include flex-center;
+        color: $white;
+        font-size: $font-size-xl;
+        margin-right: $spacing-lg;
+        flex-shrink: 0;
+      }
+      
+      .benefit-content {
+        flex: 1;
+        
+        .benefit-title {
+          font-size: $font-size-lg;
+          font-weight: $font-weight-semibold;
+          color: $gray-900;
+          margin-bottom: $spacing-sm;
+        }
+        
+        .benefit-description {
+          font-size: $font-size-base;
+          color: $gray-600;
+          line-height: $line-height-relaxed;
+        }
+      }
+    }
+  }
+  
+  .benefits-visual {
+    text-align: center;
+    
+    .benefits-image {
+      max-width: 100%;
+      height: auto;
+      border-radius: $border-radius-xl;
+      box-shadow: $shadow-lg;
+    }
+    
+    .benefits-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: $spacing-lg;
+      margin-top: $spacing-2xl;
+      
+      .stat-item {
+        text-align: center;
+        
+        .stat-number {
+          font-size: $font-size-3xl;
+          font-weight: $font-weight-bold;
+          color: $primary-color;
+          display: block;
+        }
+        
+        .stat-label {
+          font-size: $font-size-sm;
+          color: $gray-600;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+        }
+      }
+    }
+  }
+  
+  // Benefits variants
+  &.benefits-alternate {
+    .benefits-grid {
+      @include respond-to(lg) {
+        grid-template-columns: 1fr 1fr;
+        
+        &:nth-child(even) {
+          direction: rtl;
+          
+          .benefits-content {
+            direction: ltr;
+          }
+        }
+      }
+    }
+  }
+  
+  &.benefits-cards {
+    .benefits-grid {
+      @include respond-to(md) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      @include respond-to(lg) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    
+    .benefit-item {
+      background: $white;
+      padding: $spacing-xl;
+      border-radius: $border-radius-lg;
+      box-shadow: $shadow-sm;
+      border: 1px solid $gray-200;
+      transition: all $transition-normal;
+      
+      &:hover {
+        @include hover-lift;
+        box-shadow: $shadow-md;
+        border-color: $primary-color;
+      }
+    }
+  }
+  
+  &.benefits-timeline {
+    .benefits-content {
+      position: relative;
+      
+      &::before {
+        content: '';
+        position: absolute;
+        left: 24px;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: linear-gradient(to bottom, $primary-color, $accent-color);
+      }
+      
+      .benefit-item {
+        position: relative;
+        
+        .benefit-icon {
+          position: relative;
+          z-index: 2;
+          background: $white;
+          border: 3px solid $primary-color;
+          
+          &::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 12px;
+            height: 12px;
+            background: $primary-color;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+          }
+        }
+      }
+    }
+  }
+}
+
+// Benefits animations
+.benefit-item {
+  @include slide-up;
+  
+  @for $i from 1 through 6 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{$i * 0.1}s;
+    }
+  }
+}
+
+.benefits-stats .stat-item {
+  @include fade-in;
+  
+  @for $i from 1 through 3 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{$i * 0.2}s;
+    }
+  }
+}

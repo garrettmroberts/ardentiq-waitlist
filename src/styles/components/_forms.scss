@@ -1,0 +1,157 @@
+// Form Components
+
+// Email Form specific styles
+.email-form {
+  @include flex-column;
+  gap: $spacing-md;
+  max-width: 28rem;
+  margin: 0 auto;
+  min-height: 4rem;
+  margin-bottom: $spacing-md;
+  
+  @include respond-to(sm) {
+    flex-direction: row;
+    min-height: 2.5rem;
+  }
+  
+  form {
+    @include flex-column;
+    gap: $spacing-md;
+    width: 100%;
+    align-items: stretch;
+    opacity: 1;
+    transition: opacity $transition-normal ease-in-out;
+    
+    @include respond-to(sm) {
+      flex-direction: row;
+      align-items: center;
+    }
+    
+    &.fade-out {
+      opacity: 0;
+    }
+  }
+  
+  &__input {
+    flex: 1;
+    height: 2.25rem;
+    min-width: 0;
+    border-radius: $border-radius-md;
+    padding: $spacing-xs $spacing-md;
+    font-size: $font-size-base;
+    background-color: $input-background;
+    color: black;
+    transition: color $transition-normal, box-shadow $transition-normal;
+    outline: none;
+    display: flex;
+    align-items: center;
+    border-width: 0;
+  }
+  
+  &__button {
+    @extend .btn;
+    background-color: $black;
+    color: $white;
+    height: 2.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-sm;
+    
+    svg {
+      margin-left: $spacing-xs;
+      transition: transform $transition-normal;
+    }
+    
+    &:hover {
+      background-color: lighten($black, 15%);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba($black, 0.3);
+      
+      svg {
+        transform: translateX($spacing-xs);
+      }
+    }
+    
+    &:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 6px rgba($black, 0.4);
+      background-color: lighten($black, 10%);
+    }
+    
+    &:focus {
+      outline: 2px solid $white;
+      outline-offset: 2px;
+    }
+  }
+  
+  &__success {
+    @include flex-center;
+    gap: $spacing-sm;
+    color: $success-color;
+    text-align: center;
+    min-height: inherit;
+    margin-bottom: 0;
+    padding: $spacing-sm 0;
+    opacity: 0;
+    animation: fadeIn 0.3s ease-in-out forwards;
+  }
+  
+  &__toast {
+    position: fixed;
+    top: $spacing-lg;
+    right: $spacing-lg;
+    margin-top: 0;
+    padding: $spacing-sm $spacing-md;
+    border-radius: $border-radius-md;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    z-index: 1000;
+    animation: slideInRight 0.3s ease-out;
+    box-shadow: $shadow-lg;
+    
+    &--success {
+      background-color: $success-color;
+      color: $white;
+    }
+    
+    &--error {
+      background-color: $error-color;
+      color: $white;
+    }
+  }
+}
+
+// Fade in animation for success message
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 10px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

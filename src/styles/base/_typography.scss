@@ -1,0 +1,213 @@
+// Typography Base Styles
+
+// Font families
+.font-primary {
+  font-family: $font-family-primary;
+  font-weight: 400; // Default weight for Roboto Condensed
+}
+
+.font-secondary {
+  font-family: $font-family-secondary;
+}
+
+.font-mono {
+  font-family: $font-family-mono;
+}
+
+// Font sizes
+.text-xs { font-size: $font-size-xs; }
+.text-sm { font-size: $font-size-sm; }
+.text-base { font-size: $font-size-base; }
+.text-lg { font-size: $font-size-lg; }
+.text-xl { font-size: $font-size-xl; }
+.text-2xl { font-size: $font-size-2xl; }
+.text-3xl { font-size: $font-size-3xl; }
+.text-4xl { font-size: $font-size-4xl; }
+.text-5xl { font-size: $font-size-5xl; }
+.text-6xl { font-size: $font-size-6xl; }
+
+// Font weights
+.font-light { font-weight: $font-weight-light; }
+.font-normal { font-weight: $font-weight-normal; }
+.font-medium { font-weight: $font-weight-medium; }
+.font-semibold { font-weight: $font-weight-semibold; }
+.font-bold { font-weight: $font-weight-bold; }
+.font-extrabold { font-weight: $font-weight-extrabold; }
+
+// Line heights
+.leading-tight { line-height: $line-height-tight; }
+.leading-normal { line-height: $line-height-normal; }
+.leading-relaxed { line-height: $line-height-relaxed; }
+
+// Text alignment
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.text-justify { text-align: justify; }
+
+// Text decoration
+.text-underline { text-decoration: underline; }
+.text-no-underline { text-decoration: none; }
+.text-line-through { text-decoration: line-through; }
+
+// Text transform
+.text-uppercase { text-transform: uppercase; }
+.text-lowercase { text-transform: lowercase; }
+.text-capitalize { text-transform: capitalize; }
+
+// Text truncation
+.text-truncate {
+  @include text-truncate;
+}
+
+.text-clamp-2 {
+  @include text-clamp(2);
+}
+
+.text-clamp-3 {
+  @include text-clamp(3);
+}
+
+// Heading styles
+h1, .h1 {
+  font-size: $font-size-5xl;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  
+  @include respond-to(md) {
+    font-size: $font-size-6xl;
+  }
+}
+
+h2, .h2 {
+  font-size: $font-size-4xl;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  
+  @include respond-to(md) {
+    font-size: $font-size-5xl;
+  }
+}
+
+h3, .h3 {
+  font-size: $font-size-3xl;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-tight;
+  
+  @include respond-to(md) {
+    font-size: $font-size-4xl;
+  }
+}
+
+h4, .h4 {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-tight;
+}
+
+h5, .h5 {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-tight;
+}
+
+h6, .h6 {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-tight;
+}
+
+// Paragraph styles
+p, .p {
+  font-size: $font-size-base;
+  line-height: $line-height-normal;
+  margin-bottom: $spacing-md;
+  
+  &.lead {
+    font-size: $font-size-lg;
+    line-height: $line-height-relaxed;
+    color: $gray-600;
+  }
+  
+  &.small {
+    font-size: $font-size-sm;
+    line-height: $line-height-normal;
+    color: $gray-500;
+  }
+}
+
+// Link styles
+a {
+  color: $primary-color;
+  text-decoration: none;
+  transition: color $transition-normal;
+  
+  &:hover {
+    color: darken($primary-color, 10%);
+    text-decoration: underline;
+  }
+  
+  &:focus {
+    @include focus-ring;
+  }
+}
+
+// List styles
+ul, ol {
+  margin-bottom: $spacing-md;
+  padding-left: $spacing-lg;
+  
+  li {
+    margin-bottom: $spacing-sm;
+    line-height: $line-height-normal;
+  }
+}
+
+ul {
+  list-style-type: disc;
+}
+
+ol {
+  list-style-type: decimal;
+}
+
+// Blockquote styles
+blockquote {
+  border-left: 4px solid $primary-color;
+  padding-left: $spacing-lg;
+  margin: $spacing-lg 0;
+  font-style: italic;
+  color: $gray-600;
+  
+  cite {
+    display: block;
+    margin-top: $spacing-sm;
+    font-size: $font-size-sm;
+    color: $gray-500;
+  }
+}
+
+// Code styles
+code {
+  background-color: $gray-100;
+  padding: $spacing-xs $spacing-sm;
+  border-radius: $border-radius-sm;
+  font-family: $font-family-mono;
+  font-size: $font-size-sm;
+  color: $gray-800;
+}
+
+pre {
+  background-color: $gray-900;
+  color: $gray-100;
+  padding: $spacing-lg;
+  border-radius: $border-radius-md;
+  overflow-x: auto;
+  margin: $spacing-lg 0;
+  
+  code {
+    background: none;
+    padding: 0;
+    color: inherit;
+  }
+}

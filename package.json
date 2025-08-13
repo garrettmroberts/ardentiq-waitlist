@@ -6,24 +6,27 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "scss:watch": "sass --watch src/styles/main.scss:src/styles/main.css",
+    "scss:build": "sass src/styles/main.scss:src/styles/main.css --style compressed"
   },
   "dependencies": {
+    "lucide-react": "^0.539.0",
     "next": "15.4.3",
     "pg": "^8.16.3",
     "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react-dom": "19.1.0",
+    "react-icons": "^5.5.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
-    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/pg": "^8.15.4",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.4.3",
-    "tailwindcss": "^4",
+    "sass": "^1.69.0",
     "typescript": "^5"
   }
 }

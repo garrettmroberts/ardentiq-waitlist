@@ -1,0 +1,200 @@
+// Color Utility Classes
+
+// Background colors
+.bg-primary { background-color: $primary-color; }
+.bg-secondary { background-color: $secondary-color; }
+.bg-accent { background-color: $accent-color; }
+.bg-success { background-color: $success-color; }
+.bg-warning { background-color: $warning-color; }
+.bg-error { background-color: $error-color; }
+.bg-info { background-color: $info-color; }
+
+.bg-white { background-color: $white; }
+.bg-black { background-color: $black; }
+
+// Gray background colors
+.bg-gray-50 { background-color: $gray-50; }
+.bg-gray-100 { background-color: $gray-100; }
+.bg-gray-200 { background-color: $gray-200; }
+.bg-gray-300 { background-color: $gray-300; }
+.bg-gray-400 { background-color: $gray-400; }
+.bg-gray-500 { background-color: $gray-500; }
+.bg-gray-600 { background-color: $gray-600; }
+.bg-gray-700 { background-color: $gray-700; }
+.bg-gray-800 { background-color: $gray-800; }
+.bg-gray-900 { background-color: $gray-900; }
+
+// Text colors
+.text-primary { color: $primary-color; }
+.text-secondary { color: $secondary-color; }
+.text-accent { color: $accent-color; }
+.text-success { color: $success-color; }
+.text-warning { color: $warning-color; }
+.text-error { color: $error-color; }
+.text-info { color: $info-color; }
+
+.text-white { color: $white; }
+.text-black { color: $black; }
+
+// Gray text colors
+.text-gray-50 { color: $gray-50; }
+.text-gray-100 { color: $gray-100; }
+.text-gray-200 { color: $gray-200; }
+.text-gray-300 { color: $gray-300; }
+.text-gray-400 { color: $gray-400; }
+.text-gray-500 { color: $gray-500; }
+.text-gray-600 { color: $gray-600; }
+.text-gray-700 { color: $gray-700; }
+.text-gray-800 { color: $gray-800; }
+.text-gray-900 { color: $gray-900; }
+
+// Border colors
+.border-primary { border-color: $primary-color; }
+.border-secondary { border-color: $secondary-color; }
+.border-accent { border-color: $accent-color; }
+.border-success { border-color: $success-color; }
+.border-warning { border-color: $warning-color; }
+.border-error { border-color: $error-color; }
+.border-info { border-color: $info-color; }
+
+.border-white { border-color: $white; }
+.border-black { border-color: $black; }
+
+// Gray border colors
+.border-gray-50 { border-color: $gray-50; }
+.border-gray-100 { border-color: $gray-100; }
+.border-gray-200 { border-color: $gray-200; }
+.border-gray-300 { border-color: $gray-300; }
+.border-gray-400 { border-color: $gray-400; }
+.border-gray-500 { border-color: $gray-500; }
+.border-gray-600 { border-color: $gray-600; }
+.border-gray-700 { border-color: $gray-700; }
+.border-gray-800 { border-color: $gray-800; }
+.border-gray-900 { border-color: $gray-900; }
+
+// Hover states
+.hover\:bg-primary:hover { background-color: $primary-color; }
+.hover\:bg-secondary:hover { background-color: $secondary-color; }
+.hover\:bg-accent:hover { background-color: $accent-color; }
+.hover\:bg-success:hover { background-color: $success-color; }
+.hover\:bg-warning:hover { background-color: $warning-color; }
+.hover\:bg-error:hover { background-color: $error-color; }
+.hover\:bg-info:hover { background-color: $info-color; }
+
+.hover\:text-primary:hover { color: $primary-color; }
+.hover\:text-secondary:hover { color: $secondary-color; }
+.hover\:text-accent:hover { color: $accent-color; }
+.hover\:text-success:hover { color: $success-color; }
+.hover\:text-warning:hover { color: $warning-color; }
+.hover\:text-error:hover { color: $error-color; }
+.hover\:text-info:hover { color: $info-color; }
+
+.hover\:border-primary:hover { border-color: $primary-color; }
+.hover\:border-secondary:hover { border-color: $secondary-color; }
+.hover\:border-accent:hover { border-color: $accent-color; }
+.hover\:border-success:hover { border-color: $success-color; }
+.hover\:border-warning:hover { border-color: $warning-color; }
+.hover\:border-error:hover { border-color: $error-color; }
+.hover\:border-info:hover { border-color: $info-color; }
+
+// Focus states
+.focus\:bg-primary:focus { background-color: $primary-color; }
+.focus\:bg-secondary:focus { background-color: $secondary-color; }
+.focus\:bg-accent:focus { background-color: $accent-color; }
+.focus\:bg-success:focus { background-color: $success-color; }
+.focus\:bg-warning:focus { background-color: $warning-color; }
+.focus\:bg-error:focus { background-color: $error-color; }
+.focus\:bg-info:focus { background-color: $info-color; }
+
+.focus\:text-primary:focus { color: $primary-color; }
+.focus\:text-secondary:focus { color: $secondary-color; }
+.focus\:text-accent:focus { color: $accent-color; }
+.focus\:text-success:focus { color: $success-color; }
+.focus\:text-warning:focus { color: $warning-color; }
+.focus\:text-error:focus { color: $error-color; }
+.focus\:text-info:focus { color: $info-color; }
+
+.focus\:border-primary:focus { border-color: $primary-color; }
+.focus\:border-secondary:focus { border-color: $secondary-color; }
+.focus\:border-accent:focus { border-color: $accent-color; }
+.focus\:border-success:focus { border-color: $success-color; }
+.focus\:border-warning:focus { border-color: $warning-color; }
+.focus\:border-error:focus { border-color: $error-color; }
+.focus\:border-info:focus { border-color: $info-color; }
+
+// Opacity utilities
+.opacity-0 { opacity: 0; }
+.opacity-25 { opacity: 0.25; }
+.opacity-50 { opacity: 0.5; }
+.opacity-75 { opacity: 0.75; }
+.opacity-100 { opacity: 1; }
+
+// Background opacity
+.bg-opacity-10 { background-color: rgba($primary-color, 0.1); }
+.bg-opacity-20 { background-color: rgba($primary-color, 0.2); }
+.bg-opacity-30 { background-color: rgba($primary-color, 0.3); }
+.bg-opacity-40 { background-color: rgba($primary-color, 0.4); }
+.bg-opacity-50 { background-color: rgba($primary-color, 0.5); }
+.bg-opacity-60 { background-color: rgba($primary-color, 0.6); }
+.bg-opacity-70 { background-color: rgba($primary-color, 0.7); }
+.bg-opacity-80 { background-color: rgba($primary-color, 0.8); }
+.bg-opacity-90 { background-color: rgba($primary-color, 0.9); }
+
+// Text opacity
+.text-opacity-10 { color: rgba($primary-color, 0.1); }
+.text-opacity-20 { color: rgba($primary-color, 0.2); }
+.text-opacity-30 { color: rgba($primary-color, 0.3); }
+.text-opacity-40 { color: rgba($primary-color, 0.4); }
+.text-opacity-50 { color: rgba($primary-color, 0.5); }
+.text-opacity-60 { color: rgba($primary-color, 0.6); }
+.text-opacity-70 { color: rgba($primary-color, 0.7); }
+.text-opacity-80 { color: rgba($primary-color, 0.8); }
+.text-opacity-90 { color: rgba($primary-color, 0.9); }
+
+// Gradient backgrounds
+.bg-gradient-primary {
+  background: linear-gradient(135deg, $primary-color 0%, darken($primary-color, 20%) 100%);
+}
+
+.bg-gradient-secondary {
+  background: linear-gradient(135deg, $secondary-color 0%, darken($secondary-color, 20%) 100%);
+}
+
+.bg-gradient-accent {
+  background: linear-gradient(135deg, $accent-color 0%, darken($accent-color, 20%) 100%);
+}
+
+.bg-gradient-success {
+  background: linear-gradient(135deg, $success-color 0%, darken($success-color, 20%) 100%);
+}
+
+.bg-gradient-warning {
+  background: linear-gradient(135deg, $warning-color 0%, darken($warning-color, 20%) 100%);
+}
+
+.bg-gradient-error {
+  background: linear-gradient(135deg, $error-color 0%, darken($error-color, 20%) 100%);
+}
+
+.bg-gradient-info {
+  background: linear-gradient(135deg, $info-color 0%, darken($info-color, 20%) 100%);
+}
+
+// Responsive color utilities
+@include respond-to(md) {
+  .md\:bg-primary { background-color: $primary-color; }
+  .md\:text-primary { color: $primary-color; }
+  .md\:border-primary { border-color: $primary-color; }
+}
+
+@include respond-to(lg) {
+  .lg\:bg-primary { background-color: $primary-color; }
+  .lg\:text-primary { color: $primary-color; }
+  .lg\:border-primary { border-color: $primary-color; }
+}
+
+@include respond-to(xl) {
+  .xl\:bg-primary { background-color: $primary-color; }
+  .xl\:text-primary { color: $primary-color; }
+  .xl\:border-primary { border-color: $primary-color; }
+}
