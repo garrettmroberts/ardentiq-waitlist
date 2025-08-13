@@ -1,5 +1,6 @@
 import "@/styles/main.scss";
 import { Roboto } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next"
 
 const roboto = Roboto({ 
   subsets: ["latin"], 
@@ -19,7 +20,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={roboto.className}>{children}</body>
+      <body className={roboto.className}>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
