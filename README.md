@@ -13,6 +13,8 @@ This repository contains the waitlist website for ArdentIQ. The platform enables
 - **Responsive Design** - Mobile-first design with modern UI/UX
 - **Marketing Website** - Company information and product preview
 
+**🌐 Live Site**: [ardentiq.ai](https://ardentiq.ai)
+
 ## Features (Platform Preview)
 
 - **Smart Document Processing** - Upload PDFs, docs, and data sources with instant AI-powered knowledge base creation
